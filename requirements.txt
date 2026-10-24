@@ -1,0 +1,10 @@
+# Latte — AI Chat & Image Studio
+# Backend: FastAPI over the `aimind` public API.
+#
+# NOTE for Termux / Android: keep uvicorn PLAIN. The "[standard]" extra pulls
+# uvloop/httptools which need C compilation and usually fail on Android.
+# On a desktop you may optionally use uvicorn[standard] for extra speed.
+aimind>=1.6.9
+fastapi>=0.115
+uvicorn>=0.30
+python-multipart>=0.0.9   # optional: server has a built-in fallback parser
