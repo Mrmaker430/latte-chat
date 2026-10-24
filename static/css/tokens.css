@@ -1,0 +1,272 @@
+/* ==========================================================================
+   LATTE — Design Tokens
+   Cream & brown. Warm light. Glass over liquid gradients.
+   Scale: 4px base. Type: 1.200 minor-third ratio.
+   ========================================================================== */
+
+:root {
+  /* ---------- colour scale : cream ---------------------------------- */
+  --cream-000: #FFFDF8;
+  --cream-050: #FDF9F1;
+  --cream-100: #FAF4E8;
+  --cream-200: #F4EADA;
+  --cream-300: #EBDDC7;
+  --cream-400: #DFCDB1;
+
+  /* ---------- colour scale : brown ---------------------------------- */
+  --latte-300: #E0B98C;
+  --latte-400: #CE9C63;
+  --caramel-400: #C08552;
+  --caramel-500: #A9713F;
+  --mocha-500: #8A5A32;
+  --mocha-600: #6E4423;
+  --mocha-700: #55351C;
+  --espresso-800: #3D2617;
+  --espresso-900: #2A1A10;
+
+  /* ---------- semantic ---------------------------------------------- */
+  --bg:            #F5EBDB;
+  --bg-deep:       #EBDDC8;
+  --surface:       rgba(255, 252, 246, 0.62);
+  --surface-solid: var(--cream-050);
+  --surface-raise: rgba(255, 253, 249, 0.80);
+  --surface-sunk:  rgba(235, 221, 199, 0.42);
+
+  --ink:           #2E1D12;   /* primary text  — 14.6:1 on cream */
+  --ink-2:         #5C4433;   /* secondary     —  8.4:1          */
+  --ink-3:         #8A705C;   /* tertiary/meta —  4.6:1          */
+  --ink-4:         #A8917C;   /* disabled      —  2.9:1          */
+  --ink-inv:       #FBF5EA;
+
+  --accent:        var(--caramel-500);
+  --accent-hi:     var(--caramel-400);
+  --accent-deep:   var(--mocha-600);
+  --accent-wash:   rgba(169, 113, 63, 0.10);
+  --accent-ring:   rgba(169, 113, 63, 0.30);
+
+  --user-bubble-a: #7A4E2A;
+  --user-bubble-b: #5A3620;
+
+  --ok:            #4F7A4A;
+  --warn:          #A8762A;
+  --danger:        #A2453A;
+  --danger-wash:   rgba(162, 69, 58, 0.10);
+
+  /* ---------- lines & glass ----------------------------------------- */
+  --line:          rgba(90, 60, 34, 0.13);
+  --line-soft:     rgba(90, 60, 34, 0.075);
+  --line-strong:   rgba(90, 60, 34, 0.22);
+  --hairline:      rgba(255, 255, 255, 0.72);   /* inner top sheen */
+
+  /* panel gradients & misc surfaces (dark-overridable) */
+  --glass-side-a:  rgba(255, 252, 246, 0.58);
+  --glass-side-b:  rgba(250, 244, 232, 0.40);
+  --glass-side-c:  rgba(244, 234, 218, 0.50);
+  --glass-top-a:   rgba(255, 252, 246, 0.66);
+  --glass-top-b:   rgba(255, 252, 246, 0.34);
+  --drawer-a:      rgba(255, 253, 249, 0.92);
+  --drawer-b:      rgba(250, 244, 232, 0.88);
+  --fade-stream:   rgba(245, 235, 219, 0.90);
+  --hover-raise:   rgba(255, 252, 246, 0.62);
+  --row-hover:     rgba(255, 252, 246, 0.55);
+  --thead-bg:      rgba(235, 221, 199, 0.48);
+  --codebar-bg:    rgba(235, 221, 199, 0.50);
+  --code-bg-a:     #FFFDF8;
+  --code-bg-b:     #FBF5EA;
+  --track:         rgba(122, 78, 42, 0.15);
+  --switch-off:    rgba(122, 78, 42, 0.20);
+  --avatar-a:      rgba(255, 252, 246, 0.95);
+  --avatar-b:      rgba(235, 221, 199, 0.90);
+  --ico-a:         var(--cream-100);
+  --ico-b:         var(--cream-300);
+  --shimmer-hi:    rgba(255, 252, 246, 0.72);
+  --dot-mute:      rgba(122, 78, 42, 0.20);
+  --thumb-sheen:   rgba(255, 255, 255, 0.70);
+
+  --glass-blur:    22px;
+  --glass-sat:     1.55;
+  --glass-lift:    0 1px 2px rgba(61, 38, 23, .05),
+                   0 8px 24px -10px rgba(61, 38, 23, .16),
+                   0 26px 52px -30px rgba(61, 38, 23, .22);
+  --glass-lift-lg: 0 2px 4px rgba(61, 38, 23, .05),
+                   0 14px 34px -12px rgba(61, 38, 23, .18),
+                   0 44px 88px -40px rgba(61, 38, 23, .28);
+  --press:         0 1px 2px rgba(61, 38, 23, .10);
+  --glow-accent:   0 10px 30px -12px rgba(169, 113, 63, .55);
+
+  /* ---------- radii — modern, generous, nested-consistent ----------- */
+  --r-xs:  8px;
+  --r-sm:  12px;
+  --r-md:  16px;
+  --r-lg:  22px;
+  --r-xl:  28px;
+  --r-2xl: 36px;
+  --r-pill: 999px;
+  /* nested rule: inner radius = outer radius − padding */
+  --r-bubble: 26px;
+
+  /* ---------- space — 4px base -------------------------------------- */
+  --s-0:  0;
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  20px;
+  --s-6:  24px;
+  --s-7:  32px;
+  --s-8:  40px;
+  --s-9:  56px;
+  --s-10: 72px;
+  --s-11: 96px;
+
+  /* ---------- layout metrics ---------------------------------------- */
+  --sidebar-w:     288px;
+  --sidebar-w-lg:  320px;
+  --topbar-h:      64px;
+  --composer-min:  60px;
+  --measure:       74ch;      /* optimal reading line length */
+  --msg-max:       820px;
+  --gutter:        var(--s-6);
+  --safe-b:        env(safe-area-inset-bottom, 0px);
+  --safe-t:        env(safe-area-inset-top, 0px);
+
+  /* ---------- type --------------------------------------------------- */
+  --font-ui:   "Plus Jakarta Sans", "Inter", ui-sans-serif, -apple-system,
+               BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+               "Noto Sans", sans-serif;
+  --font-dis:  "Instrument Serif", "Fraunces", ui-serif, Georgia,
+               "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
+               Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* 1.200 minor third, anchored on 15px UI base */
+  --fs-2xs: 11px;
+  --fs-xs:  12px;
+  --fs-sm:  13.5px;
+  --fs-md:  15px;
+  --fs-lg:  17px;
+  --fs-xl:  20px;
+  --fs-2xl: 25px;
+  --fs-3xl: 31px;
+  --fs-4xl: 40px;
+  --fs-hero: clamp(34px, 6.4vw, 60px);
+
+  --lh-tight: 1.18;
+  --lh-snug:  1.38;
+  --lh-body:  1.62;
+  --lh-loose: 1.78;
+
+  --ls-tight: -0.022em;
+  --ls-normal: -0.008em;
+  --ls-wide:  0.055em;
+  --ls-caps:  0.10em;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+
+  /* ---------- motion -------------------------------------------------- */
+  --e-out:     cubic-bezier(.22, 1, .36, 1);
+  --e-in-out:  cubic-bezier(.65, 0, .35, 1);
+  --e-spring:  cubic-bezier(.34, 1.56, .64, 1);
+  --t-fast:    140ms;
+  --t-base:    240ms;
+  --t-slow:    420ms;
+  --t-ambient: 26s;
+
+  /* ---------- z-index -------------------------------------------------- */
+  --z-ambient: 0;
+  --z-base:    1;
+  --z-sticky:  20;
+  --z-sidebar: 60;
+  --z-overlay: 80;
+  --z-modal:   100;
+  --z-toast:   120;
+}
+
+/* ---------- dark : "espresso" — adaptive via media + manual override ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --apply-dark: 1; }
+}
+:root[data-theme="dark"] { --apply-dark: 1; }
+
+:root[data-theme="dark"],
+:root:has(body[data-scheme="dark"]) {
+  --bg:            #20160F;
+  --bg-deep:       #160F0A;
+  --surface:       rgba(52, 37, 26, 0.55);
+  --surface-solid: #2A1D14;
+  --surface-raise: rgba(66, 48, 34, 0.72);
+  --surface-sunk:  rgba(22, 15, 10, 0.55);
+
+  --ink:     #F6ECDD;
+  --ink-2:   #DBC7B2;
+  --ink-3:   #AE947D;
+  --ink-4:   #85705E;
+  --ink-inv: #241811;
+
+  --accent:      #D9A468;
+  --accent-hi:   #E8BC87;
+  --accent-deep: #C08552;
+  --accent-wash: rgba(217, 164, 104, 0.13);
+  --accent-ring: rgba(217, 164, 104, 0.38);
+
+  --user-bubble-a: #A9743F;
+  --user-bubble-b: #7C4F27;
+
+  --ok:      #8FBE85;
+  --warn:    #E0B469;
+  --danger:  #E39083;
+
+  --line:        rgba(240, 220, 195, 0.13);
+  --line-soft:   rgba(240, 220, 195, 0.075);
+  --line-strong: rgba(240, 220, 195, 0.24);
+  --hairline:    rgba(255, 236, 210, 0.14);
+
+  --glass-side-a:  rgba(48, 34, 23, 0.72);
+  --glass-side-b:  rgba(40, 28, 19, 0.55);
+  --glass-side-c:  rgba(32, 22, 15, 0.68);
+  --glass-top-a:   rgba(44, 31, 21, 0.80);
+  --glass-top-b:   rgba(44, 31, 21, 0.44);
+  --drawer-a:      rgba(40, 28, 19, 0.94);
+  --drawer-b:      rgba(32, 22, 15, 0.92);
+  --fade-stream:   rgba(32, 22, 15, 0.92);
+  --hover-raise:   rgba(255, 236, 210, 0.08);
+  --row-hover:     rgba(255, 236, 210, 0.05);
+  --thead-bg:      rgba(255, 236, 210, 0.07);
+  --codebar-bg:    rgba(255, 236, 210, 0.06);
+  --code-bg-a:     #241A12;
+  --code-bg-b:     #1B130D;
+  --track:         rgba(255, 236, 210, 0.16);
+  --switch-off:    rgba(255, 236, 210, 0.20);
+  --avatar-a:      rgba(72, 52, 36, 0.95);
+  --avatar-b:      rgba(52, 37, 26, 0.92);
+  --ico-a:         rgba(72, 52, 36, 0.9);
+  --ico-b:         rgba(52, 37, 26, 0.9);
+  --shimmer-hi:    rgba(255, 236, 210, 0.14);
+  --dot-mute:      rgba(255, 236, 210, 0.22);
+  --thumb-sheen:   rgba(255, 236, 210, 0.10);
+
+  --glass-lift:    0 1px 2px rgba(0,0,0,.30), 0 10px 28px -12px rgba(0,0,0,.55),
+                   0 30px 60px -34px rgba(0,0,0,.65);
+  --glass-lift-lg: 0 2px 6px rgba(0,0,0,.35), 0 18px 40px -14px rgba(0,0,0,.60),
+                   0 48px 96px -44px rgba(0,0,0,.75);
+}
+
+/* ---------- reduced motion ---------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 1ms; --t-base: 1ms; --t-slow: 1ms; --t-ambient: 0ms;
+  }
+}
+
+/* ---------- higher contrast --------------------------------------------- */
+@media (prefers-contrast: more) {
+  :root {
+    --line: rgba(60, 38, 20, 0.40);
+    --line-strong: rgba(60, 38, 20, 0.60);
+    --surface: rgba(255, 253, 249, 0.92);
+    --ink-3: #6B5341;
+  }
+}
