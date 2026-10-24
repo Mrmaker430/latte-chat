@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5">
+<meta name="theme-color" content="#F5EBDB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#20160F" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Latte — a warm, glassy AI workspace for conversation and image generation.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Latte — AI Chat &amp; Image Studio</title>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23E0B98C'/%3E%3Cstop offset='.5' stop-color='%23A9713F'/%3E%3Cstop offset='1' stop-color='%2355351C'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Cpath d='M9 12h11a4.5 4.5 0 0 1 0 9h-1.2A5 5 0 0 1 14 24h-1a4 4 0 0 1-4-4V12Z' fill='none' stroke='%23FFFDF8' stroke-width='1.8' stroke-linejoin='round'/%3E%3Cpath d='M11.5 8.5c0-1 1-1.2 1-2.2M15.5 8.5c0-1 1-1.2 1-2.2' stroke='%23FFFDF8' stroke-width='1.5' stroke-linecap='round' opacity='.75'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<link rel="stylesheet" href="/static/css/tokens.css">
+<link rel="stylesheet" href="/static/css/base.css">
+<link rel="stylesheet" href="/static/css/layout.css">
+<link rel="stylesheet" href="/static/css/components.css">
+<link rel="stylesheet" href="/static/css/overlays.css">
+<link rel="stylesheet" href="/static/css/responsive.css">
+
+<!-- icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 9h11a4.5 4.5 0 0 1 0 9h-.6"/><path d="M5 9v7a5 5 0 0 0 5 5h1a5 5 0 0 0 5-5V9H5Z"/><path d="M8 5.5c0-1 .9-1.2.9-2.2M12 5.5c0-1 .9-1.2.9-2.2"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a7.5 7.5 0 0 1-10.9 6.7L4 20l1.3-4.1A7.5 7.5 0 1 1 20 12Z"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="3.5"/><circle cx="8.5" cy="10" r="1.6"/><path d="m4 17 4.6-4.2a2.2 2.2 0 0 1 3 .1L20 21"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2 13.9 9l5.8 1.9-5.8 1.9L12 18.6 10.1 12.8 4.3 10.9 10.1 9 12 3.2Z"/><path d="M18.5 3v3M20 4.5h-3" opacity=".6"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5.5 11.5 6.5-6.5 6.5 6.5"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24" fill="currentColor"><rect x="6.5" y="6.5" width="11" height="11" rx="3"/></symbol>
+    <symbol id="i-paperclip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5 12.4 19a4.6 4.6 0 0 1-6.5-6.5l7.9-7.8a3.1 3.1 0 0 1 4.4 4.4l-7.8 7.8a1.6 1.6 0 0 1-2.2-2.2l7.2-7.2"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h11"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="3"/><path d="M15 5.5A2.5 2.5 0 0 0 12.5 4h-6A2.5 2.5 0 0 0 4 6.5v6A2.5 2.5 0 0 0 5.5 15"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-.7 4.3"/><path d="M20 4.5V11h-6.2"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 7h15M9.5 7V5.2A1.7 1.7 0 0 1 11.2 3.5h1.6A1.7 1.7 0 0 1 14.5 5.2V7"/><path d="M6.5 7 7.4 19a2 2 0 0 0 2 1.9h5.2a2 2 0 0 0 2-1.9L17.5 7"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M4.5 19.5h15"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.5H5.5A1 1 0 0 0 4.5 5.5V9M15 4.5h3.5a1 1 0 0 1 1 1V9M9 19.5H5.5a1 1 0 0 1-1-1V15M15 19.5h3.5a1 1 0 0 0 1-1V15"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.1"/><path d="M19.4 14.5a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.2a1.6 1.6 0 0 0-2.8-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7h-.3a2 2 0 1 1 0-4h.2a1.6 1.6 0 0 0 1.1-2.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 2.7-1.1v-.3a2 2 0 1 1 4 0v.2a1.6 1.6 0 0 0 2.8 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7h.3a2 2 0 1 1 0 4h-.2a1.6 1.6 0 0 0-1.4 1Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.2A8.4 8.4 0 0 1 9.8 4 8.5 8.5 0 1 0 20 14.2Z"/></symbol>
+    <symbol id="i-agent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7.5" width="16" height="12" rx="4"/><path d="M12 4v3.5"/><circle cx="9.2" cy="13" r="1.1" fill="currentColor" stroke="none"/><circle cx="14.8" cy="13" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5 21 19.5H3L12 4.5Z"/><path d="M12 10v4M12 17h.01"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8h.01"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19.5h4L20 8a2.5 2.5 0 0 0-3.5-3.5L5 16v3.5Z"/><path d="m15 6 3.5 3.5"/></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 4.5A2.8 2.8 0 0 0 6.8 7 2.6 2.6 0 0 0 5 9.5c0 .9.4 1.6 1 2.1-.6.5-1 1.3-1 2.1A2.7 2.7 0 0 0 7.7 16.4a2.8 2.8 0 0 0 4.6 2.1V4.9a2.6 2.6 0 0 0-2.8-.4Z"/><path d="M14.5 4.5A2.8 2.8 0 0 1 17.2 7 2.6 2.6 0 0 1 19 9.5c0 .9-.4 1.6-1 2.1.6.5 1 1.3 1 2.1a2.7 2.7 0 0 1-2.7 2.7 2.8 2.8 0 0 1-4.6 2.1"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5.5 13.5H11L10 21l8-11h-5.5L13 3Z"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8.5 8-4.5 4 4.5 4M15.5 8l4.5 4-4.5 4M13.5 5l-3 14"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 3.9a2.1 2.1 0 0 1 3 3L8.4 18l-4 1 1-4L16.5 3.9Z"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="17.5" cy="6" r="2.5"/><circle cx="6.5" cy="12" r="2.5"/><circle cx="17.5" cy="18" r="2.5"/><path d="m8.8 10.8 6.4-3.5M8.8 13.2l6.4 3.5"/></symbol>
+    <symbol id="i-wand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m4 20 10-10M14.5 4.2l.9 2 2 .9-2 .9-.9 2-.9-2-2-.9 2-.9.9-2ZM19.5 12.5l.6 1.3 1.3.6-1.3.6-.6 1.3-.6-1.3-1.3-.6 1.3-.6.6-1.3Z"/></symbol>
+    <symbol id="i-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4h3l4.2 3.6V6.4L7 10H4Z"/><path d="M15.2 9.4a4.2 4.2 0 0 1 0 5.2M17.8 7.2a7.4 7.4 0 0 1 0 9.6"/></symbol>
+  </defs>
+</svg>
+</head>
+
+<body>
+<a class="skip-link" href="#input">Skip to composer</a>
+
+<!-- ambient liquid background (behind everything, never under text) -->
+<div class="ambient" aria-hidden="true">
+  <div class="ambient__sheen"></div>
+  <div class="ambient__blob ambient__blob--a"></div>
+  <div class="ambient__blob ambient__blob--b"></div>
+  <div class="ambient__blob ambient__blob--c"></div>
+  <div class="ambient__blob ambient__blob--d"></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="app" id="app">
+
+  <!-- ══════════════ SIDEBAR ══════════════ -->
+  <aside class="sidebar" id="sidebar" aria-label="Conversations">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true"><svg><use href="#i-cup"/></svg></div>
+      <div class="brand__text">
+        <div class="brand__name">Latte</div>
+        <div class="brand__sub">Chat &amp; Image Studio</div>
+      </div>
+      <button class="icon-btn" id="closeSidebar" aria-label="Close menu" style="margin-left:auto;display:none">
+        <svg><use href="#i-close"/></svg>
+      </button>
+    </div>
+
+    <button class="btn-new" id="newChatBtn">
+      <svg><use href="#i-plus"/></svg>
+      <span>New chat</span>
+      <kbd>⌘K</kbd>
+    </button>
+
+    <div class="side-label">
+      <span class="t-caps">Recent</span>
+      <button class="act" id="clearAllBtn" title="Clear all conversations" style="opacity:.8">
+        <svg><use href="#i-trash"/></svg>
+      </button>
+    </div>
+
+    <div class="conv-list scroll-y" id="convList" role="list" aria-label="Conversation history"></div>
+
+    <div class="side-foot">
+      <button class="btn-ghost" id="paletteBtn" style="justify-content:flex-start;width:100%">
+        <svg><use href="#i-search"/></svg><span>Search &amp; commands</span>
+        <kbd style="margin-left:auto">⌘K</kbd>
+      </button>
+      <button class="btn-ghost" id="settingsBtn" style="justify-content:flex-start;width:100%">
+        <svg><use href="#i-settings"/></svg><span>Settings</span>
+      </button>
+      <div class="status-pill" id="statusPill" role="status" aria-live="polite">
+        <span class="status-dot" id="statusDot" data-s="off"></span>
+        <span id="statusText" class="ellipsis">Connecting…</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ══════════════ MAIN ══════════════ -->
+  <main class="main">
+
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><svg><use href="#i-menu"/></svg></button>
+
+      <div class="topbar__title">
+        <h1 id="chatTitle" class="ellipsis">New chat</h1>
+        <p id="chatSub">Ask anything, or switch to image mode</p>
+      </div>
+
+      <div class="topbar__tools">
+        <button class="btn-ghost" id="agentBtn" aria-haspopup="true" aria-expanded="false" title="Specialist agents">
+          <svg><use href="#i-agent"/></svg><span id="agentLabel">Agent</span>
+        </button>
+
+        <button class="model-btn" id="modelBtn" aria-haspopup="listbox" aria-expanded="false" title="Choose model">
+          <span class="model-btn__dot" id="modelDot"></span>
+          <span class="model-btn__name" id="modelName">Balanced</span>
+          <svg class="model-btn__chev"><use href="#i-chev"/></svg>
+        </button>
+
+        <div class="ctx" id="ctxMeter" title="Context window usage">
+          <span class="ctx__bar"><span class="ctx__fill" id="ctxFill"></span></span>
+          <span class="ctx__txt t-num" id="ctxTxt">0%</span>
+        </div>
+
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle theme" title="Toggle theme"><svg><use href="#i-moon"/></svg></button>
+      </div>
+    </header>
+
+    <div class="stream-wrap" id="streamWrap">
+      <div class="stream scroll-y" id="stream" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Conversation">
+        <div class="stream__inner" id="streamInner"></div>
+      </div>
+    </div>
+
+    <div class="dock">
+      <form class="composer" id="composer" data-mode="chat" autocomplete="off">
+
+        <div class="modes" role="tablist" aria-label="Mode">
+          <span class="modes__thumb" id="modeThumb" aria-hidden="true"></span>
+          <button type="button" class="mode" role="tab" id="modeChat" data-mode="chat" aria-selected="true">
+            <svg><use href="#i-chat"/></svg><span>Chat</span>
+          </button>
+          <button type="button" class="mode" role="tab" id="modeImage" data-mode="image" aria-selected="false">
+            <svg><use href="#i-image"/></svg><span>Image</span>
+          </button>
+        </div>
+
+        <div class="tray" id="tray" aria-label="Attachments"></div>
+
+        <div class="composer__row">
+          <button type="button" class="ghost-round" id="attachBtn" aria-label="Attach images" title="Attach images (PNG, JPG, WebP, GIF · 5 MB)">
+            <svg><use href="#i-paperclip"/></svg>
+          </button>
+          <input type="file" id="fileInput" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden>
+
+          <div class="ta-wrap">
+            <label class="sr-only" for="input" id="inputLabel">Message Latte</label>
+            <textarea id="input" rows="1" placeholder="Ask anything…" aria-describedby="inputHint"></textarea>
+          </div>
+
+          <button type="submit" class="send" id="sendBtn" aria-label="Send message" disabled>
+            <svg id="sendIcon"><use href="#i-send"/></svg>
+          </button>
+        </div>
+
+        <!-- image studio controls -->
+        <div class="studio" id="studio">
+          <div class="field-row">
+            <div class="field" style="flex:1 1 210px">
+              <span class="field__label" id="ratioLabel">Aspect</span>
+              <div class="seg" id="ratioSeg" role="group" aria-labelledby="ratioLabel"></div>
+            </div>
+            <div class="field" style="flex:0 1 auto">
+              <span class="field__label" id="styleLabel">Style</span>
+              <button type="button" class="drop-btn" id="styleBtn" aria-haspopup="listbox" aria-expanded="false">
+                <span class="drop-btn__dot" aria-hidden="true"></span>
+                <span class="drop-btn__name" id="styleName">Auto</span>
+                <svg class="drop-btn__chev" aria-hidden="true"><use href="#i-chev"/></svg>
+              </button>
+            </div>
+            <div class="field" style="flex:0 1 auto">
+              <span class="field__label" id="qualLabel">Quality</span>
+              <div class="seg" id="qualSeg" role="group" aria-labelledby="qualLabel"></div>
+            </div>
+            <div class="field" style="flex:0 1 auto">
+              <span class="field__label" id="nLabel">Images</span>
+              <div class="seg" id="nSeg" role="group" aria-labelledby="nLabel"></div>
+            </div>
+          </div>
+
+          <div class="field-row" style="margin-top:var(--s-4);align-items:flex-end">
+            <div class="field" style="flex:2 1 240px">
+              <label class="field__label" for="negInput">Avoid <span style="text-transform:none;letter-spacing:0;font-weight:400">(optional)</span></label>
+              <input class="t-input" id="negInput" type="text" placeholder="blurry, text, watermark…" maxlength="400">
+            </div>
+            <div class="field" style="flex:0 1 130px">
+              <label class="field__label" for="seedInput">Seed</label>
+              <input class="t-input t-num" id="seedInput" type="text" inputmode="numeric" placeholder="random">
+            </div>
+            <div class="field field--inline" style="flex:0 1 auto;align-self:flex-end">
+              <button type="button" class="btn-ghost" id="diceSeed" title="Random seed" aria-label="Random seed">
+                <svg><use href="#i-refresh"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="hint" id="inputHint">
+          <span><kbd>Enter</kbd> send</span>
+          <span><kbd>Shift</kbd>+<kbd>Enter</kbd> newline</span>
+          <span><kbd>⌘</kbd>+<kbd>K</kbd> commands</span>
+          <span class="hint__spacer"></span>
+          <span class="hint__count t-num" id="charCount">0 / 24000</span>
+        </div>
+      </form>
+    </div>
+  </main>
+</div>
+
+<!-- ══════════════ OVERLAYS ══════════════ -->
+<div class="scrim" id="scrim" hidden></div>
+
+<div class="pop" id="modelPop" role="listbox" aria-label="Models" hidden></div>
+<div class="pop" id="agentPop" role="listbox" aria-label="Specialist agents" hidden></div>
+<div class="pop" id="stylePop" role="listbox" aria-label="Image style" hidden></div>
+<div class="pop" id="kebabPop" role="menu" aria-label="Conversation actions" hidden></div>
+
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+  <div class="drawer__head">
+    <h2 id="drawerTitle">Settings</h2>
+    <button class="icon-btn" id="drawerClose" aria-label="Close settings"><svg><use href="#i-close"/></svg></button>
+  </div>
+  <div class="drawer__body scroll-y">
+
+    <div class="set-group">
+      <div class="set-group__title"><span class="t-caps">Appearance</span></div>
+      <div class="set-row">
+        <div class="set-row__txt"><strong>Theme</strong><span>Auto follows your system setting</span></div>
+        <div class="seg" id="themeSeg" role="group" aria-label="Theme">
+          <button class="seg__btn" type="button" data-theme="light" aria-pressed="false">Light</button>
+          <button class="seg__btn" type="button" data-theme="auto" aria-pressed="true">Auto</button>
+          <button class="seg__btn" type="button" data-theme="dark" aria-pressed="false">Dark</button>
+        </div>
+      </div>
+      <div class="set-row">
+        <div class="set-row__txt"><strong>Motion &amp; ambience</strong><span>Drifting gradients, grain and transitions</span></div>
+        <button class="switch" id="motionSwitch" role="switch" aria-checked="true" aria-label="Motion and ambience"></button>
+      </div>
+      <div class="set-row">
+        <div class="set-row__txt"><strong>Glass blur</strong><span>Frosted depth behind panels</span></div>
+        <div class="range-row">
+          <input type="range" id="blurRange" min="0" max="40" step="2" value="22" aria-label="Glass blur strength">
+          <output id="blurOut">22px</output>
+        </div>
+      </div>
+      <div class="set-row">
+        <div class="set-row__txt"><strong>Text size</strong><span>Scales the whole interface</span></div>
+        <div class="seg" id="densitySeg" role="group" aria-label="Text size">
+          <button class="seg__btn" type="button" data-scale="0.94" aria-pressed="false">S</button>
+          <button class="seg__btn" type="button" data-scale="1" aria-pressed="true">M</button>
+          <button class="seg__btn" type="button" data-scale="1.08" aria-pressed="false">L</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="set-group">
+      <div class="set-group__title"><span class="t-caps">Model behaviour</span></div>
+      <div class="set-row">
+        <div class="set-row__txt"><strong>Temperature</strong><span>Lower is precise, higher is inventive</span></div>
+        <div class="range-row">
+          <input type="range" id="tempRange" min="0" max="1.4" step="0.1" value="0.7" aria-label="Temperature">
+          <output id="tempOut">0.7</output>
+        </div>
+      </div>
+      <div class="set-row" style="align-items:flex-start;flex-direction:column;gap:var(--s-3)">
+        <div class="set-row__txt"><strong>Tone</strong><span>Applies to the next message you send</span></div>
+        <div class="seg" id="toneSeg" role="group" aria-label="Tone preset" style="width:100%"></div>
+      </div>
+      <div class="set-row" style="align-items:flex-start;flex-direction:column;gap:var(--s-3)">
+        <div class="set-row__txt"><strong>Custom system prompt</strong><span>Overrides tone when filled in</span></div>
+        <textarea class="t-input" id="systemInput" rows="3" style="width:100%" placeholder="You are…"></textarea>
+      </div>
+    </div>
+
+    <div class="set-group">
+      <div class="set-group__title"><span class="t-caps">Memory</span></div>
+      <div class="set-row">
+        <div class="set-row__txt"><strong>Context window</strong><span id="memDetail">Measuring…</span></div>
+        <button class="btn-ghost" id="clearMemBtn"><svg><use href="#i-trash"/></svg><span>Clear</span></button>
+      </div>
+    </div>
+
+    <div class="set-group">
+      <div class="set-group__title"><span class="t-caps">About</span></div>
+      <p class="t-sm t-mute" style="line-height:var(--lh-body)">
+        Latte runs on the <strong>aimind</strong> Python module — one interface to many chat models
+        plus image generation. Streaming is real SSE; images render in parallel and arrive as they finish.
+      </p>
+    </div>
+  </div>
+  <div class="drawer__foot">
+    <button class="btn-ghost" id="healthBtn"><svg><use href="#i-bolt"/></svg><span>Run health check</span></button>
+    <button class="btn-ghost" id="drawerDone" style="background:linear-gradient(152deg,var(--caramel-400),var(--mocha-600));color:var(--cream-050);border-color:transparent">Done</button>
+  </div>
+</aside>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+  <div class="lightbox__top">
+    <span class="t-caps" id="lbCounter">1 / 1</span>
+    <button class="lb-btn" id="lbPrev" aria-label="Previous image"><svg style="rotate:90deg"><use href="#i-chev"/></svg></button>
+    <button class="lb-btn" id="lbNext" aria-label="Next image"><svg style="rotate:-90deg"><use href="#i-chev"/></svg></button>
+    <button class="lb-btn" id="lbClose" aria-label="Close viewer"><svg><use href="#i-close"/></svg></button>
+  </div>
+  <div class="lightbox__stage"><img id="lbImg" alt=""></div>
+  <div class="lightbox__bar">
+    <p class="lightbox__prompt" id="lbPrompt"></p>
+    <div class="lightbox__acts">
+      <button class="lb-btn" id="lbUse" title="Use as chat attachment" aria-label="Use as chat attachment"><svg><use href="#i-paperclip"/></svg></button>
+      <button class="lb-btn" id="lbCopy" title="Copy prompt" aria-label="Copy prompt"><svg><use href="#i-copy"/></svg></button>
+      <button class="lb-btn" id="lbDl" title="Download" aria-label="Download image"><svg><use href="#i-download"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command palette" aria-hidden="true">
+  <div class="palette__box">
+    <div class="palette__input-row">
+      <svg><use href="#i-search"/></svg>
+      <input id="paletteInput" type="text" placeholder="Search commands, models, agents…" aria-label="Search commands" autocomplete="off">
+      <kbd>Esc</kbd>
+    </div>
+    <div class="palette__list scroll-y" id="paletteList" role="listbox"></div>
+    <div class="palette__foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>Enter</kbd> run</span><span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<div class="boot" id="boot">
+  <div class="boot__inner">
+    <div class="boot__mark"><svg><use href="#i-cup"/></svg></div>
+    <div class="boot__txt" id="bootTxt">Warming the models…</div>
+    <div class="boot__err" id="bootErr"></div>
+  </div>
+</div>
+
+<script src="/static/js/md.js" defer></script>
+<script src="/static/js/app.js" defer></script>
+</body>
+</html>
